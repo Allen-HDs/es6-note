@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 一:新增的API
+        // 1.keys(obj):获取对象的所有 key 形成的数组
+        // 2.values(obj):获取对象的所有 value 形成的数组
+        // 3.entries(obj):获取对象的所有 key 和 value 形成的二维数组
+        // 4.assign(dest,...src):将多个src对象的值拷贝到dest中(第一层为深拷贝,第二层为浅拷贝)
+        const person = {
+            name: "Jack",
+            age: 24,
+            sex: "男",
+            language: ["java", "js", "vue"]
+        }
+        console.log(Object.keys(person)); //0:"name"  1:"age"  2:"sex"  3:"language"
+        console.log(Object.values(person)); //0:"Jack"  1:24  2:"男"  3:(3) ["java", "js", "vue"]
+        console.log(Object.entries(person)); //0:(2) ["name", "Jack"]  1:(2) ["age", 24]  2:(2) ["sex", "男"]  3:(2) ["language", Array(3)]
+
+        const target = {a:1};
+        const source1 = {b:2};
+        const source2 = {c:3};
+        Object.assign(target,source1,source2);
+        console.log(target); //{a: 1, b: 2, c: 3}
+
+
+        //2.声明对象的简写
+        const age = 23;
+        const name = "张三";
+        const person1 = {age:age,name:name};
+        const person2 = {age,name};
+        console.log(person2) //{age: 23, name: "张三"}
+
+
+        //3.对象的函数属性简写
+        let person3 = {
+            name : "Allen",
+            eat : function(food) {
+                console.log(this.name+"在吃"+food)
+            },
+            //箭头函数不能使用 this   应该用对象.属性
+            eat2 : food => console.log(this.name+"在吃"+food),
+            eat3 : food => console.log(person3.name+"在吃"+food),
+            eat4(food){
+                console.log(this.name+"在吃"+food);
+            }
+        }
+
+        person3.eat("香蕉");
+        person3.eat2("苹果");
+        person3.eat3("西瓜");
+        person3.eat4("榴莲");
+
+
+
+
+        //4.对象扩展运算符
+        //1).拷贝对象(深度拷贝)
+        let p1 = {name : "Allen",age:24}
+        let someOne = {...p1};
+        console.log(someOne);//{name: "Allen", age: 24}
+
+        //2).对象合并
+        let age1 = {age : 25};
+        let name1 = {name: "张三"};
+        let p2 = {name:"李四"}
+        p2 = {...age1,...name1};
+        console.log(p2);//{age: 25, name: "张三"}
+    </script>
+</body>
+</html>

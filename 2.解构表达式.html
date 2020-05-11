@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.数组解构
+        // let arr = [1,2,3];
+        // let a = arr[0];
+        // let b = arr[1];
+        // let c = arr[2];
+        //以前我们想获取其中的值,只能通过角标. ES6可以这样
+
+        // let[a,b,c] = arr; //a,b,c 将与arr中的每个位置对应来取值
+        // console.log(a,b,c)
+
+
+
+
+        // 2.对象解构
+        const person = {
+            name : "Jack",
+            age : 24,
+            sex : "男"
+        }
+        // const name = person.name;
+        // const age = person.age;
+        // const sex = person.sex;
+
+        // const {name,age,sex} = person
+        // console.log(name,age,sex)
+
+        const {name:abc,age,sex} = person
+        console.log(abc,age,sex)
+
+        //3. 字符串的扩展
+        // let str = "hello.vue";
+        // console.log(str.startsWith("hello"));
+        // console.log(str.endsWith("vue"));
+        // console.log(str.includes("hello"));
+        // console.log(str.includes("e"));
+
+        //4. 字符串模板
+        let ss = `
+            <div> 
+              <span>Hello World</span>
+            </div>
+        `
+        // console.log(ss)
+
+        //5. 字符串插入变量和表达式,变量名写在 ${} 中,${} 中可以放入 JavaScript 表达式
+        function fun(){
+            return "这是一个函数";
+        }
+
+        let info = `我是 ${abc},今年${age+10}了,我想说${fun()}`
+        console.log(info)
+    </script>
+    
+</body>
+</html>
